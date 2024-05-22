@@ -1,0 +1,60 @@
+{
+  "name": "@liborgabrhel/style-utils",
+  "version": "1.0.0",
+  "description": "Utility functions to combine and apply CSS style classes.",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liborgabrhel/style-utils"
+  },
+  "bugs": {
+    "url": "https://github.com/liborgabrhel/style-utils/issues"
+  },
+  "homepage": "https://github.com/liborgabrhel/style-utils#readme",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "format": "prettier --write .",
+    "test": "tsx --test --test-reporter spec --experimental-test-coverage test/*.test.ts",
+    "test:watch": "tsx --test --test-reporter spec --watch test/*.test.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "prettier": "^3.2.5",
+    "tsx": "^4.10.5",
+    "typescript": "^5.4.5"
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "bracketSpacing": true,
+    "endOfLine": "lf",
+    "semi": false,
+    "singleQuote": false,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "printWidth": 120,
+    "useTabs": false
+  },
+  "keywords": [
+    "css",
+    "style",
+    "utility",
+    "class"
+  ],
+  "author": "Libor Gabrhel <gabrhel.libor@gmail.com>",
+  "license": "ISC"
+}
