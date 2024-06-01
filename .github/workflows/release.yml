@@ -1,0 +1,53 @@
+name: release
+on: [push, pull_request]
+
+jobs:
+  test:
+    name: 🧪 Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: ↗️ Checkout repo
+        uses: actions/checkout@v4
+
+      - name: 🎛️ Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: ⬇️ Install dependencies
+        run: npm install
+
+      - name: 🩺 Test
+        run: npm run test
+
+  release:
+    name: 🚀 Release
+    needs: [test]
+    runs-on: ubuntu-latest
+
+    if:
+      ${{ github.repository == 'liborgabrhel/style-utils' && 
+      contains('refs/heads/main', github.ref) && 
+      github.event_name == 'push' }}
+
+    steps:
+      - name: ↗️ Checkout repo
+        uses: actions/checkout@v4
+
+      - name: 🎛️ Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: ⬇️ Install dependencies
+        run: npm install
+
+      - name: 📦 Run Build
+        run: npm run build
+
+      - name: 🚀 Release
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
